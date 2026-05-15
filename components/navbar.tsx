@@ -69,39 +69,23 @@ export default function Navbar() {
                 <div className="size-9 rounded-full bg-muted animate-pulse" />
               ) : session?.user ? (
                 <DropdownMenu>
-                  <DropdownMenuTrigger className="relative rounded-full outline-none focus-visible:ring-2 focus-visible:ring-primary/50 transition-all">
+                  <DropdownMenuTrigger className="relative rounded-full outline-none">
                     <Avatar className="size-9 border-2 border-primary/30">
                       <AvatarImage
                         src={session.user.image || undefined}
-                        alt={session.user.name || "User"}
+                        alt="User"
                       />
-                      <AvatarFallback className="bg-primary/10 text-primary font-medium">
-                        {session.user.name ? (
-                          session.user.name.charAt(0).toUpperCase()
-                        ) : (
-                          <User className="size-4" />
-                        )}
+                      <AvatarFallback>
+                        <User className="size-4" />
                       </AvatarFallback>
                     </Avatar>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent
-                    align="end"
-                    className="w-56 glass border-border/50"
-                  >
-                    <DropdownMenuLabel className="font-normal">
-                      <div className="flex flex-col gap-1">
-                        <p className="text-sm font-medium">{session.user.name}</p>
-                        <p className="text-xs text-muted-foreground truncate">
-                          {session.user.email}
-                        </p>
-                      </div>
-                    </DropdownMenuLabel>
-                    <DropdownMenuSeparator />
+                  <DropdownMenuContent className="w-56 glass">
                     <DropdownMenuItem
                       onClick={handleSignOut}
-                      className="text-destructive focus:text-destructive cursor-pointer"
+                      className="text-destructive cursor-pointer p-2"
                     >
-                      <LogOut className="mr-2 size-4" />
+                      <LogOut className="mr-2 size-4 inline" />
                       Sign out
                     </DropdownMenuItem>
                   </DropdownMenuContent>
