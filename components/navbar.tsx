@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation'
 import { LogOut, Moon, Presentation, Sun, User } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
-import { Button } from './ui/button'
+import { Button, buttonVariants } from './ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -68,7 +68,7 @@ export default function Navbar() {
               <div className="size-9 rounded-full bg-muted animate-pulse" />
             ) : session?.user ? (
               <DropdownMenu>
-                <DropdownMenuTrigger asChild>
+                <DropdownMenuTrigger>
                   <Button
                     variant="ghost"
                     className="relative size-9 rounded-full p-0"
@@ -111,9 +111,12 @@ export default function Navbar() {
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <Button asChild size="sm" className="rounded-xl">
-                <Link href="/login">Sign in</Link>
-              </Button>
+              <Link 
+                href="/login" 
+                className={cn(buttonVariants({ size: "sm" }), "rounded-xl")}
+              >
+                Sign in
+              </Link>
             )}
           </div>
         </div>

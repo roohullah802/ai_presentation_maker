@@ -1,10 +1,12 @@
 "use client";
 
+import { cn } from "@/lib/utils";
+
 import { usePresentationDetail } from "@/hooks/use-presentations";
-import { 
-  LAYOUT_OPTIONS, 
-  SLIDE_STYLES, 
-  TONE_OPTIONS 
+import {
+  LAYOUT_OPTIONS,
+  SLIDE_STYLES,
+  TONE_OPTIONS
 } from "@/lib/constants";
 import { GenerationStatus } from "@/components/generation-status";
 import { SlideCard } from "@/components/slide-card";
@@ -20,7 +22,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -92,11 +94,11 @@ export default function PresentationDetailClient({ id }: { id: string }) {
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
-        document.getElementById('slide-preview-container')?.requestFullscreen();
-        setIsFullscreen(true);
+      document.getElementById('slide-preview-container')?.requestFullscreen();
+      setIsFullscreen(true);
     } else {
-        document.exitFullscreen();
-        setIsFullscreen(false);
+      document.exitFullscreen();
+      setIsFullscreen(false);
     }
   };
 
@@ -117,9 +119,12 @@ export default function PresentationDetailClient({ id }: { id: string }) {
           <p className="text-destructive">
             Something went wrong
           </p>
-          <Button asChild variant="outline" className="rounded-xl">
-            <Link href="/">Back home</Link>
-          </Button>
+          <Link
+            href="/"
+            className={cn(buttonVariants({ variant: "outline" }), "rounded-xl")}
+          >
+            Back home
+          </Link>
         </div>
       </main>
     );
@@ -134,17 +139,13 @@ export default function PresentationDetailClient({ id }: { id: string }) {
       <div className="max-w-6xl mx-auto space-y-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <Button
-              asChild
-              variant="ghost"
-              size="sm"
-              className="rounded-xl gap-1"
+            <Link
+              href="/"
+              className={cn(buttonVariants({ variant: "ghost", size: "sm" }), "rounded-xl gap-1")}
             >
-              <Link href="/">
-                <ArrowLeft className="size-4" />
-                Home
-              </Link>
-            </Button>
+              <ArrowLeft className="size-4" />
+              Home
+            </Link>
             <GenerationStatus status={data.status} />
           </div>
           <span className="text-sm text-muted-foreground">
@@ -259,7 +260,7 @@ export default function PresentationDetailClient({ id }: { id: string }) {
                     </Label>
                     <Slider
                       value={[form.slideCount]}
-                      onValueChange={([v]) =>
+                      onValueChange={([v]: any) =>
                         setForm((s) => ({
                           ...s,
                           slideCount: v,
@@ -344,7 +345,7 @@ export default function PresentationDetailClient({ id }: { id: string }) {
 
                 <div className="flex flex-wrap justify-between gap-3 pt-2">
                   <AlertDialog>
-                    <AlertDialogTrigger asChild>
+                    <AlertDialogTrigger>
                       <Button
                         type="button"
                         variant="destructive"
@@ -402,9 +403,8 @@ export default function PresentationDetailClient({ id }: { id: string }) {
                   <Button
                     variant="secondary"
                     size="icon"
-                    className={`absolute top-3 right-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity ${
-                      isFullscreen ? "opacity-100" : ""
-                    }`}
+                    className={`absolute top-3 right-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity ${isFullscreen ? "opacity-100" : ""
+                      }`}
                     onClick={toggleFullscreen}
                   >
                     <Maximize className="size-4" />
