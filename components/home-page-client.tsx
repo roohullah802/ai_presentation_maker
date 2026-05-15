@@ -99,10 +99,10 @@ export default function HomePageClient({ user }: { user: any }) {
               </Label>
               <Slider
                 value={[form.slideCount]}
-                onValueChange={([v]: any) =>
+                onValueChange={(val) =>
                   setForm((s) => ({
                     ...s,
-                    slideCount: v[0],
+                    slideCount: Array.isArray(val) ? val[0] : val,
                   }))
                 }
                 min={3}

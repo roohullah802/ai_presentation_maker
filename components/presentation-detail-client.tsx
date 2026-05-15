@@ -260,10 +260,10 @@ export default function PresentationDetailClient({ id }: { id: string }) {
                     </Label>
                     <Slider
                       value={[form.slideCount]}
-                      onValueChange={([v]: any) =>
+                      onValueChange={(val) =>
                         setForm((s) => ({
                           ...s,
-                          slideCount: v,
+                          slideCount: Array.isArray(val) ? val[0] : val,
                         }))
                       }
                       min={3}
