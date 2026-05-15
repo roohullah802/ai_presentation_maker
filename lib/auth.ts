@@ -9,6 +9,9 @@ export const auth = betterAuth({
     database: mongodbAdapter(db),
     baseURL: "https://ai-presentation-maker-lilac.vercel.app",
     trustedOrigins: ["https://ai-presentation-maker-lilac.vercel.app", "http://localhost:3000"],
+    advanced: {
+        useSecureCookies: true,
+    },
     socialProviders: {
         google: {
             clientId: process.env.GOOGLE_CLIENT_ID!,
