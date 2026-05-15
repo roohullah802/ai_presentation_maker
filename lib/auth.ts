@@ -7,8 +7,11 @@ const db = client.db();
 
 export const auth = betterAuth({
     database: mongodbAdapter(db),
-    baseURL: process.env.BETTER_AUTH_URL || "http://localhost:3000",
-    trustedOrigins: ["https://ai-presentation-maker-lilac.vercel.app", "http://localhost:3000"],
+    baseURL: process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
+    trustedOrigins: [
+        "http://localhost:3000",
+        "https://ai-presentation-maker-lilac.vercel.app"
+    ],
     socialProviders: {
         google: {
             clientId: process.env.GOOGLE_CLIENT_ID!,
