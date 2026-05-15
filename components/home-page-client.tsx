@@ -1,11 +1,11 @@
 "use client";
 
 import { PresentationListSection } from "@/components/presentation-list-section";
-import { 
-    SLIDE_STYLES, 
-    TONE_OPTIONS, 
-    LAYOUT_OPTIONS, 
-    PRESENTATION_TEMPLATES 
+import {
+  SLIDE_STYLES,
+  TONE_OPTIONS,
+  LAYOUT_OPTIONS,
+  PRESENTATION_TEMPLATES
 } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -45,11 +45,11 @@ export default function HomePageClient({ user }: { user: any }) {
   const handleGenerate = () => {
     if (!form.content.trim()) return;
     createMut.mutate({
-        prompt: form.content.trim(),
-        slideCount: form.slideCount,
-        style: form.style,
-        tone: form.tone,
-        layout: form.layout,
+      prompt: form.content.trim(),
+      slideCount: form.slideCount,
+      style: form.style,
+      tone: form.tone,
+      layout: form.layout,
     });
   }
 
@@ -99,10 +99,10 @@ export default function HomePageClient({ user }: { user: any }) {
               </Label>
               <Slider
                 value={[form.slideCount]}
-                onValueChange={([v]) =>
+                onValueChange={([v]: any) =>
                   setForm((s) => ({
                     ...s,
-                    slideCount: v,
+                    slideCount: v[0],
                   }))
                 }
                 min={3}
