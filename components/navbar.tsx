@@ -68,25 +68,20 @@ export default function Navbar() {
               <div className="size-9 rounded-full bg-muted animate-pulse" />
             ) : session?.user ? (
               <DropdownMenu>
-                <DropdownMenuTrigger>
-                  <Button
-                    variant="ghost"
-                    className="relative size-9 rounded-full p-0"
-                  >
-                    <Avatar className="size-9 border-2 border-primary/30">
-                      <AvatarImage
-                        src={session.user.image || undefined}
-                        alt={session.user.name}
-                      />
-                      <AvatarFallback className="bg-primary/10 text-primary font-medium">
-                        {session.user.name ? (
-                          session.user.name.charAt(0).toUpperCase()
-                        ) : (
-                          <User className="size-4" />
-                        )}
-                      </AvatarFallback>
-                    </Avatar>
-                  </Button>
+                <DropdownMenuTrigger className="relative rounded-full outline-none focus-visible:ring-2 focus-visible:ring-primary/50 transition-all">
+                  <Avatar className="size-9 border-2 border-primary/30">
+                    <AvatarImage
+                      src={session.user.image || undefined}
+                      alt={session.user.name || "User"}
+                    />
+                    <AvatarFallback className="bg-primary/10 text-primary font-medium">
+                      {session.user.name ? (
+                        session.user.name.charAt(0).toUpperCase()
+                      ) : (
+                        <User className="size-4" />
+                      )}
+                    </AvatarFallback>
+                  </Avatar>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
                   align="end"
