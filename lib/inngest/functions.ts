@@ -13,7 +13,7 @@ import { inngest } from './client'
 function buildImageKitUrl(prompt: string, filename: string): string {
   const baseUrl = process.env.IMAGEKIT_BASE_URL
   if (!baseUrl) return ""
-  
+
   const sanitizedPrompt = prompt
     .replace(/[^\w\s-]/g, ' ')
     .replace(/\s+/g, ' ')
@@ -70,21 +70,21 @@ export const generatePresentation = inngest.createFunction(
     const { slides } = await step.run('generate-slides-content', async () => {
       const systemPrompt = `You are an expert presentation designer. Given a user's content/prompt, create a compelling presentation.
 
-Style: ${presentation.style}
-Tone: ${presentation.tone}
-Layout preference: ${presentation.layout}
-Number of slides requested: ${presentation.slideCount}
+        Style: ${presentation.style}
+        Tone: ${presentation.tone}
+        Layout preference: ${presentation.layout}
+        Number of slides requested: ${presentation.slideCount}
 
-Guidelines:
-- Create exactly ${presentation.slideCount} slides
-- First slide should be a title slide
-- Last slide should be a summary or call-to-action
-- Keep content concise and impactful
-- For imagePrompt, describe a professional illustration that complements the slide (no text in images)
-`
+        Guidelines:
+        - Create exactly ${presentation.slideCount} slides
+        - First slide should be a title slide
+        - Last slide should be a summary or call-to-action
+        - Keep content concise and impactful
+        - For imagePrompt, describe a professional illustration that complements the slide (no text in images)
+        `
 
       const result = await generateText({
-        model: google('gemini-2.0-flash-exp'), // Using the latest available flash model or what was in original
+        model: google('gemini-2.0-flash'),
         output: Output.object({ schema: slidesResponseSchema }),
         system: systemPrompt,
         prompt: presentation.prompt,

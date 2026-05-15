@@ -2,10 +2,10 @@ import LoginForm from "@/components/login-form";
 import { Presentation } from "lucide-react";
 import Link from "next/link";
 
-export default async function LoginPage({ 
-    searchParams 
-}: { 
-    searchParams: Promise<{ redirect?: string }> 
+export default async function LoginPage({
+    searchParams
+}: {
+    searchParams: Promise<{ redirect?: string }>
 }) {
     const { redirect: redirectTo } = await searchParams;
 
