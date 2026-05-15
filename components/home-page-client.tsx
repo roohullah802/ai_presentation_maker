@@ -33,7 +33,7 @@ type HomeFormState = {
 export default function HomePageClient({ user }: { user: any }) {
   const [form, setForm] = useState<HomeFormState>({
     content: '',
-    slideCount: 8,
+    slideCount: 2,
     style: 'minimal',
     tone: 'formal',
     layout: 'balanced',
@@ -105,7 +105,7 @@ export default function HomePageClient({ user }: { user: any }) {
                     slideCount: Array.isArray(val) ? val[0] : val,
                   }))
                 }
-                min={3}
+                min={2}
                 max={20}
                 step={1}
                 className="py-2"

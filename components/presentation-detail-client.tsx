@@ -266,7 +266,7 @@ export default function PresentationDetailClient({ id }: { id: string }) {
                           slideCount: Array.isArray(val) ? val[0] : val,
                         }))
                       }
-                      min={3}
+                      min={2}
                       max={20}
                       step={1}
                       className="py-2"
