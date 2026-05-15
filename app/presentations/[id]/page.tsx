@@ -1,9 +1,9 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import HomePageClient from "@/components/home-page-client";
+import PresentationDetailClient from "@/components/presentation-detail-client";
 
-export default async function Page() {
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
     const session = await auth.api.getSession({
         headers: await headers(),
     });
@@ -12,5 +12,7 @@ export default async function Page() {
         redirect("/login");
     }
 
-    return <HomePageClient user={session.user} />;
+    const id = (await params).id;
+
+    return <PresentationDetailClient id={id} />;
 }
