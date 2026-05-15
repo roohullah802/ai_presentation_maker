@@ -7,8 +7,8 @@ const db = client.db();
 
 export const auth = betterAuth({
     database: mongodbAdapter(db),
-    baseURL: "https://vercel.app"
-    ,
+    baseURL: "https://ai-presentation-maker-lilac.vercel.app",
+    trustedOrigins: ["https://ai-presentation-maker-lilac.vercel.app", "http://localhost:3000"],
     socialProviders: {
         google: {
             clientId: process.env.GOOGLE_CLIENT_ID!,
