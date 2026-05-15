@@ -7,12 +7,12 @@ import {
 import Link from 'next/link'
 
 type Presentation = {
-    _id: string;
-    title: string;
-    slideCount: number;
-    style: string;
-    tone: string;
-    updatedAt: string;
+  _id: string;
+  title: string;
+  slideCount: number;
+  style: string;
+  tone: string;
+  updatedAt: string;
 }
 
 type PresentationCardProps = {
@@ -24,7 +24,7 @@ export function PresentationCard({ presentation: p }: PresentationCardProps) {
     dateStyle: 'medium',
     timeStyle: 'short',
   })
-  
+
   const thumb = `https://api.dicebear.com/9.x/glass/svg?seed=${encodeURIComponent(p._id)}`
 
   return (
@@ -48,6 +48,7 @@ export function PresentationCard({ presentation: p }: PresentationCardProps) {
             </CardDescription>
             <p className="text-xs text-muted-foreground pt-1">
               Updated {updated}
+
             </p>
           </CardHeader>
         </div>
