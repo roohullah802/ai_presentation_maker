@@ -6,7 +6,7 @@ const client = await clientPromise;
 const db = client.db();
 
 if (!db || typeof db.collection !== 'function') {
-    console.error("❌ Better Auth: Invalid Database instance detected. 'db.collection' is not a function.", { dbType: typeof db });
+    console.error(" Better Auth: Invalid Database instance detected. 'db.collection' is not a function.", { dbType: typeof db });
 }
 
 export const auth = betterAuth({
