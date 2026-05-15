@@ -267,7 +267,7 @@ export default function PresentationDetailClient({ id }: { id: string }) {
                         }))
                       }
                       min={2}
-                      max={20}
+                      max={10}
                       step={1}
                       className="py-2"
                     />
